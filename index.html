@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-accent="lilas">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nossas Curiosidades — Guia do Produto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      color-scheme: light;
+      --font-rounded: 'Poppins', 'Nunito', 'SF Pro Rounded', system-ui, -apple-system, sans-serif;
+      --bg-app: #f9fafb;
+      --bg-gradient: radial-gradient(circle at top left, rgba(191, 166, 255, 0.32), transparent 55%),
+        radial-gradient(circle at 80% 20%, rgba(255, 199, 218, 0.28), transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(191, 237, 227, 0.25), transparent 65%);
+      --surface: #ffffff;
+      --surface-glass: rgba(255, 255, 255, 0.7);
+      --surface-glass-dark: rgba(15, 23, 42, 0.55);
+      --text-primary: #1f2937;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --shadow-soft: 0 24px 48px rgba(15, 23, 42, 0.08);
+      --border-soft: rgba(148, 163, 184, 0.35);
+      --chip-text: #1f2937;
+      --accent-lilas: #bfa6ff;
+      --accent-rosa: #ffc7da;
+      --accent-menta: #bfede3;
+      --accent-pessego: #ffd3af;
+      --accent: var(--accent-lilas);
+      --accent-strong: #8f6df2;
+      --accent-muted: rgba(191, 166, 255, 0.16);
+      --accent-gradient: linear-gradient(135deg, rgba(191, 166, 255, 0.32), rgba(255, 199, 218, 0.18));
+      --focus-ring: 0 0 0 3px rgba(191, 166, 255, 0.4);
+      --success: #34d399;
+      --warning: #fbbf24;
+      --danger: #f87171;
+      --danger-soft: rgba(248, 113, 113, 0.14);
+      --info: #38bdf8;
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 0.75rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-2xl: 3rem;
+      --transition-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+      --card-width: min(320px, 82vw);
+    }
+
+    [data-theme='dark'] {
+      color-scheme: dark;
+      --bg-app: #0f172a;
+      --bg-gradient: radial-gradient(circle at top left, rgba(191, 166, 255, 0.24), transparent 55%),
+        radial-gradient(circle at 75% 25%, rgba(255, 199, 218, 0.18), transparent 60%),
+        radial-gradient(circle at 10% 90%, rgba(191, 237, 227, 0.12), transparent 65%);
+      --surface: rgba(15, 23, 42, 0.92);
+      --surface-glass: rgba(30, 41, 59, 0.85);
+      --surface-glass-dark: rgba(15, 23, 42, 0.7);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --shadow-soft: 0 24px 48px rgba(15, 23, 42, 0.5);
+      --border-soft: rgba(99, 102, 241, 0.3);
+      --chip-text: #0f172a;
+      --accent-strong: #d6c7ff;
+      --accent-muted: rgba(191, 166, 255, 0.22);
+      --focus-ring: 0 0 0 3px rgba(223, 196, 255, 0.45);
+    }
+
+    [data-accent='rosa'] {
+      --accent: var(--accent-rosa);
+      --accent-strong: #ff9fbf;
+      --accent-muted: rgba(255, 199, 218, 0.2);
+      --focus-ring: 0 0 0 3px rgba(255, 199, 218, 0.5);
+    }
+
+    [data-accent='menta'] {
+      --accent: var(--accent-menta);
+      --accent-strong: #38d8b3;
+      --accent-muted: rgba(191, 237, 227, 0.25);
+      --focus-ring: 0 0 0 3px rgba(191, 237, 227, 0.5);
+    }
+
+    [data-accent='pessego'] {
+      --accent: var(--accent-pessego);
+      --accent-strong: #ffb674;
+      --accent-muted: rgba(255, 218, 179, 0.25);
+      --focus-ring: 0 0 0 3px rgba(255, 218, 179, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-rounded);
+      background: var(--bg-app);
+      color: var(--text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: var(--bg-gradient);
+      z-index: -2;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      backdrop-filter: blur(120px);
+      z-index: -3;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 2.5vw, 2rem);
+    }
+
+    h3 {
+      font-size: clamp(1.3rem, 2vw, 1.6rem);
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+    }
+
+    header.hero {
+      padding: clamp(2rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5rem);
+      display: grid;
+      gap: var(--spacing-lg);
+      text-align: center;
+    }
+
+    .hero-tagline {
+      max-width: 640px;
+      justify-self: center;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--spacing-sm);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: var(--accent-muted);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .pill-button,
+    .ghost-button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.7rem 1.3rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 180ms var(--transition-snappy), box-shadow 200ms var(--transition-snappy);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #1f2937;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .pill-button svg,
+    .ghost-button svg {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
+
+    .pill-button:focus-visible,
+    .ghost-button:focus-visible,
+    .chip:focus-visible,
+    .accent-swatch:focus-visible {
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    .pill-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 30px rgba(15, 23, 42, 0.16);
+    }
+
+    .ghost-button {
+      background: transparent;
+      border: 1px solid var(--border-soft);
+      color: var(--text-primary);
+      box-shadow: none;
+    }
+
+    .ghost-button:hover {
+      transform: translateY(-1px);
+      background: rgba(148, 163, 184, 0.14);
+    }
+
+    main {
+      display: grid;
+      gap: var(--spacing-2xl);
+      padding-bottom: var(--spacing-2xl);
+    }
+
+    section {
+      position: relative;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 2.5vw, 2.5rem);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(22px);
+    }
+
+    [data-theme='dark'] .section-card {
+      background: var(--surface-glass);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .section-header p {
+      max-width: 640px;
+    }
+
+    .prototype-grid {
+      display: grid;
+      gap: var(--spacing-lg);
+    }
+
+    .screen-tabs {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.45);
+      padding: 0.75rem;
+      border-radius: 20px;
+      overflow-x: auto;
+    }
+
+    [data-theme='dark'] .screen-tabs {
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .screen-tab {
+      border: none;
+      background: transparent;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 160ms var(--transition-snappy), color 160ms var(--transition-snappy);
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    .screen-tab[aria-selected='true'] {
+      background: var(--accent-muted);
+      color: var(--text-primary);
+    }
+
+    .phone-area {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: start;
+      gap: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    .phone-shell {
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.15));
+      border-radius: 34px;
+      padding: 1.2rem 0.9rem;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4), 0 25px 60px rgba(15, 23, 42, 0.18);
+      position: relative;
+      backdrop-filter: blur(40px);
+      overflow: hidden;
+    }
+
+    [data-theme='dark'] .phone-shell {
+      background: linear-gradient(160deg, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.85));
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 25px 60px rgba(15, 23, 42, 0.5);
+    }
+
+    .phone-screen {
+      width: 100%;
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 1rem 1rem 1.15rem;
+      min-height: 540px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    [data-theme='dark'] .phone-screen {
+      background: var(--surface-glass-dark);
+    }
+
+    .screen {
+      display: none;
+      flex-direction: column;
+      gap: 0.8rem;
+      height: 100%;
+      animation: fade-in 220ms var(--transition-snappy);
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .status-bar span {
+      display: inline-flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+
+    .screen-body {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+    [data-theme='dark'] .screen-body {
+      background: rgba(15, 23, 42, 0.65);
+      box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.15);
+    }
+
+    .screen-body h2 {
+      font-size: 1.25rem;
+    }
+
+    .screen-body p,
+    .screen-body li {
+      font-size: 0.95rem;
+    }
+
+    .screen-illustration {
+      width: 100%;
+      height: 140px;
+      border-radius: var(--radius-md);
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .screen-card {
+      background: rgba(255, 255, 255, 0.78);
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      box-shadow: 0 18px 28px rgba(15, 23, 42, 0.08);
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    [data-theme='dark'] .screen-card {
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: var(--accent-muted);
+      color: var(--chip-text);
+      font-weight: 600;
+      font-size: 0.78rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 160ms var(--transition-snappy);
+    }
+
+    .chip svg {
+      width: 0.95rem;
+      height: 0.95rem;
+    }
+
+    .chip:hover {
+      transform: translateY(-1px);
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .bottom-nav {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .bottom-nav span {
+      display: grid;
+      justify-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0;
+      border-radius: 14px;
+    }
+
+    .bottom-nav span.active {
+      background: var(--accent-muted);
+      color: var(--text-primary);
+    }
+
+    .floating-cta {
+      position: absolute;
+      bottom: 76px;
+      right: 1.2rem;
+      background: var(--accent);
+      color: #1f2937;
+      border-radius: 22px;
+      padding: 0.65rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.16);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .floating-cta svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .floating-cta::after {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .floating-cta:hover::after {
+      opacity: 1;
+    }
+
+    .floating-cta:focus-visible::after {
+      opacity: 1;
+      box-shadow: var(--focus-ring);
+    }
+
+    .tokens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .token {
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    [data-theme='dark'] .token {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .token-swatch {
+      height: 60px;
+      border-radius: var(--radius-sm);
+      background: var(--token-color, var(--accent));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .typography-samples {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .typo-row {
+      display: grid;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+    }
+
+    [data-theme='dark'] .typo-row {
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .component-library {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .component-row {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .component-card {
+      background: rgba(255, 255, 255, 0.62);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: grid;
+      gap: 0.7rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    [data-theme='dark'] .component-card {
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .component-card h4 {
+      font-size: 1rem;
+    }
+
+    .microcopy-list {
+      display: grid;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .microcopy-list strong {
+      color: var(--text-primary);
+    }
+
+    .flow-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .flow-step {
+      background: rgba(255, 255, 255, 0.62);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      display: grid;
+      gap: 0.4rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    [data-theme='dark'] .flow-step {
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .flow-step h4 {
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+    }
+
+    .json-block {
+      background: rgba(15, 23, 42, 0.9);
+      color: #f8fafc;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      font-family: 'SFMono-Regular', 'Fira Code', 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    code {
+      font-family: inherit;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .accent-picker {
+      display: inline-flex;
+      gap: 0.4rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.5);
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    [data-theme='dark'] .accent-picker {
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .accent-picker span {
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .accent-swatch {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      background: var(--token-color);
+      cursor: pointer;
+      transition: transform 140ms var(--transition-snappy), border 140ms var(--transition-snappy);
+    }
+
+    .accent-swatch[aria-pressed='true'] {
+      border-color: rgba(15, 23, 42, 0.3);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    [data-theme='dark'] .accent-swatch[aria-pressed='true'] {
+      border-color: rgba(248, 250, 252, 0.65);
+    }
+
+    .note {
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      font-size: 0.92rem;
+      display: grid;
+      gap: 0.4rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px dashed rgba(148, 163, 184, 0.4);
+    }
+
+    [data-theme='dark'] .note {
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .mockups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .mockup-caption {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 0.6rem;
+    }
+
+    @media (max-width: 900px) {
+      .phone-shell {
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      header.hero {
+        text-align: left;
+      }
+
+      .hero-tagline {
+        text-align: left;
+        justify-self: flex-start;
+      }
+
+      .hero-actions {
+        justify-content: flex-start;
+      }
+
+      .screen-tabs {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero container">
+    <span class="badge" aria-label="Identidade do produto">💜 Nossas Curiosidades</span>
+    <h1>Um app fofo, acolhedor e inteligente para guardar o jeitinho único do seu amor</h1>
+    <p class="hero-tagline">
+      Design mobile-first com microinterações suaves, foco em privacidade e sensação de aconchego. Explore o
+      sistema visual, componentes e telas hi-fi criadas para lembrar e celebrar todas as pequenas memórias do casal.
+    </p>
+    <div class="hero-actions">
+      <button class="pill-button" data-action="toggle-theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3.1a1 1 0 0 0-1 0 9 9 0 1 0 9.9 9.9 1 1 0 0 0-1-1A7 7 0 0 1 12 3.1Z" />
+        </svg>
+        Tema Claro / Escuro
+      </button>
+      <div class="accent-picker" role="group" aria-label="Trocar cor temática">
+        <span>Paleta:</span>
+        <button class="accent-swatch" style="--token-color: var(--accent-lilas)" data-accent-option="lilas" aria-pressed="true" aria-label="Lilás pastel"></button>
+        <button class="accent-swatch" style="--token-color: var(--accent-rosa)" data-accent-option="rosa" aria-pressed="false" aria-label="Rosa blush"></button>
+        <button class="accent-swatch" style="--token-color: var(--accent-menta)" data-accent-option="menta" aria-pressed="false" aria-label="Menta suave"></button>
+        <button class="accent-swatch" style="--token-color: var(--accent-pessego)" data-accent-option="pessego" aria-pressed="false" aria-label="Pêssego aconchegante"></button>
+      </div>
+      <button class="ghost-button" data-action="scroll-to-components">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m7 7 5-5 5 5" />
+          <path d="M12 2v20" />
+        </svg>
+        Ver biblioteca de componentes
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section-card" id="prototipo">
+      <div class="section-header">
+        <h2>Protótipo navegável & telas hi-fi</h2>
+        <p>
+          Selecione as telas para visualizar o fluxo completo — do onboarding à configuração de privacidade,
+          incluindo estados vazios e mensagens de erro acolhedoras. Todas as interações principais estão representadas
+          em layouts mobile-first com bottom navigation.
+        </p>
+      </div>
+      <div class="prototype-grid">
+        <div class="screen-tabs" role="tablist" aria-label="Telas do protótipo">
+          <button class="screen-tab" role="tab" aria-selected="true" data-screen-target="onboarding-1">Onboarding 1</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="onboarding-2">Onboarding 2</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="onboarding-3">Onboarding 3</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="login">Login & Conta</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="inicio">Início / Feed</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="criar">Criar curiosidade</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="detalhe">Detalhe da curiosidade</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="albuns">Álbuns</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="album-detalhe">Álbum: Viagens</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="busca">Busca & filtros</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="linha-do-tempo">Linha do tempo</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="perfil">Perfil & privacidade</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="empty-inicio">Empty: Início</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="empty-albuns">Empty: Álbuns</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="empty-busca">Empty: Busca</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="erro-upload">Erro: upload</button>
+          <button class="screen-tab" role="tab" aria-selected="false" data-screen-target="erro-offline">Erro: sem conexão</button>
+        </div>
+        <div class="phone-area">
+          <div class="phone-shell">
+            <div class="phone-screen" role="presentation">
+              <div class="screen active" id="screen-onboarding-1" role="tabpanel" aria-labelledby="onboarding-1">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M20 7v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" />
+                      <path d="M12 17v.01" />
+                    </svg>
+                    84%
+                  </span>
+                </div>
+                <div class="screen-body">
+                  <div class="screen-illustration">Guarde as pequenas coisas</div>
+                  <h2>Guarde as pequenas coisas que fazem o amor ser único.</h2>
+                  <p>
+                    Receba lembretes carinhosos e registre curiosidades em segundos. Tudo privado e só seu até decidir
+                    convidar quem ama.
+                  </p>
+                  <button class="pill-button" style="justify-content: center;">
+                    Quero começar
+                  </button>
+                </div>
+                <div class="bottom-nav">
+                  <span class="active">Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-onboarding-2" role="tabpanel" aria-labelledby="onboarding-2">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>🔒 100%</span>
+                </div>
+                <div class="screen-body">
+                  <div class="screen-illustration">Crie em 3 passos</div>
+                  <h2>Crie sua primeira curiosidade</h2>
+                  <ul>
+                    <li>Título curto que faça você sorrir.</li>
+                    <li>Foto opcional e humor do momento.</li>
+                    <li>Salve no álbum certo ou deixe em rascunho.</li>
+                  </ul>
+                  <button class="pill-button" style="justify-content: center;">Nova curiosidade</button>
+                </div>
+                <div class="bottom-nav">
+                  <span class="active">Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-onboarding-3" role="tabpanel" aria-labelledby="onboarding-3">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>🕊️ 78%</span>
+                </div>
+                <div class="screen-body">
+                  <div class="screen-illustration">Privado por padrão</div>
+                  <h2>Privacidade acolhedora</h2>
+                  <p>
+                    Tudo fica protegido por biometria e PIN. Pareie com seu parceiro(a) apenas quando os dois quiserem
+                    compartilhar memórias — cada envio precisa de aprovação dupla.
+                  </p>
+                  <button class="pill-button" style="justify-content: center;">Entendi, continuar</button>
+                </div>
+                <div class="bottom-nav">
+                  <span class="active">Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-login" role="tabpanel" aria-labelledby="login">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>✨ 73%</span>
+                </div>
+                <div class="screen-body">
+                  <h2>Acesse suas memórias</h2>
+                  <div class="screen-card" style="gap: 0.75rem;">
+                    <label>
+                      <span style="font-size: 0.78rem; color: var(--text-muted);">E-mail</span>
+                      <input type="email" placeholder="voce@email.com" style="width: 100%; padding: 0.65rem; border-radius: 16px; border: 1px solid var(--border-soft); background: transparent; color: var(--text-primary); font-size: 0.9rem;" aria-label="E-mail" />
+                    </label>
+                    <label>
+                      <span style="font-size: 0.78rem; color: var(--text-muted);">Senha</span>
+                      <input type="password" placeholder="••••••••" style="width: 100%; padding: 0.65rem; border-radius: 16px; border: 1px solid var(--border-soft); background: transparent; color: var(--text-primary); font-size: 0.9rem;" aria-label="Senha" />
+                    </label>
+                    <button class="pill-button" style="justify-content: center;">Entrar</button>
+                    <button class="ghost-button" style="justify-content: center;">Usar sem conta (offline)</button>
+                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted);">Backup automático e pareamento podem ser ativados depois.</p>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span class="active">Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-inicio" role="tabpanel" aria-labelledby="inicio">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>💞 68%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.9rem;">
+                  <h2>Olá! Suas memórias especiais estão aqui</h2>
+                  <div class="screen-card">
+                    <div class="card-meta">
+                      <span>Curiosidades · 8</span>
+                      <span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="m12 21-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18Z" />
+                        </svg>
+                        Favoritas · 4
+                      </span>
+                    </div>
+                    <div>
+                      <h3 style="font-size: 1.05rem;">Álbuns populares</h3>
+                      <div style="display: grid; gap: 0.4rem;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                          <span>Músicas favoritas</span>
+                          <span style="color: var(--accent-strong);">▶︎</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                          <span>Jeitos que amo</span>
+                          <span style="color: var(--accent-strong);">3 curiosidades</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                          <span>Viagens</span>
+                          <span style="color: var(--accent-strong);">Ver álbum</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div class="card-meta">
+                      <span>Favorita da semana</span>
+                      <span>⭐ Guardada com carinho</span>
+                    </div>
+                    <div style="display: grid; gap: 0.4rem;">
+                      <h3 style="font-size: 1.05rem;">Nossa música favorita para relaxar</h3>
+                      <p style="font-size: 0.85rem;">
+                        Sempre que você está cansado, coloca aquela música do Coldplay – Fix You. Diz que a melodia acalma e te faz
+                        pensar em coisas boas. Eu amo te ver sorrir no refrão.
+                      </p>
+                      <div class="card-meta">
+                        <span>😊 leve</span>
+                        <span>12 mar · Música</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="floating-cta" role="button" tabindex="0">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 5v14" />
+                    <path d="M5 12h14" />
+                  </svg>
+                  Nova curiosidade
+                </div>
+                <div class="bottom-nav">
+                  <span class="active">Início</span>
+                  <span>Álbuns</span>
+                  <span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 5v14" />
+                      <path d="M5 12h14" />
+                    </svg>
+                  </span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-criar" role="tabpanel" aria-labelledby="criar">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>📝 60%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.7rem;">
+                  <h2>Nova curiosidade</h2>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <label style="display: grid; gap: 0.3rem;">
+                      <span style="font-size: 0.78rem; color: var(--text-muted);">Título</span>
+                      <input type="text" value="Jeito fofo de pedir café" style="padding: 0.6rem; border-radius: 16px; border: 1px solid var(--border-soft); background: transparent; color: var(--text-primary);" />
+                    </label>
+                    <label style="display: grid; gap: 0.3rem;">
+                      <span style="font-size: 0.78rem; color: var(--text-muted);">Descrição</span>
+                      <textarea rows="3" style="padding: 0.6rem; border-radius: 16px; border: 1px solid var(--border-soft); background: transparent; color: var(--text-primary); resize: none;">Você inclina a cabeça, abre um sorriso e solta um “faz um cafezinho com carinho?”. Não dá pra negar. 💕</textarea>
+                    </label>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                      <button class="chip" type="button">+ Foto</button>
+                      <button class="chip" type="button">Álbum: Jeitos que amo</button>
+                      <button class="chip" type="button">Humor 😊</button>
+                      <button class="chip" type="button">Hoje · Casa</button>
+                      <button class="chip" type="button">Tags: rotina, carinho</button>
+                    </div>
+                    <div style="display: grid; gap: 0.4rem;">
+                      <span style="font-size: 0.78rem; color: var(--text-muted);">Preview em tempo real</span>
+                      <div class="screen-card" style="background: rgba(255, 255, 255, 0.8);">
+                        <div class="card-meta">
+                          <span>Jeitos que amo</span>
+                          <span>😊 leve</span>
+                        </div>
+                        <h3 style="font-size: 1rem;">Jeito fofo de pedir café</h3>
+                        <p style="font-size: 0.82rem;">
+                          Você inclina a cabeça... e eu me derreto.
+                        </p>
+                      </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; gap: 0.5rem;">
+                      <button class="ghost-button" style="flex: 1; justify-content: center;">Salvar rascunho</button>
+                      <button class="pill-button" style="flex: 1; justify-content: center;">Guardar com carinho</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span>Início</span>
+                  <span>Álbuns</span>
+                  <span class="active">Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-detalhe" role="tabpanel" aria-labelledby="detalhe">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>📷 58%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.9rem;">
+                  <div class="screen-illustration" style="height: 150px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80') center/cover; position: relative; overflow: hidden;">
+                    <span style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15, 23, 42, 0) 20%, rgba(15, 23, 42, 0.5) 100%);"></span>
+                  </div>
+                  <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                    <button class="chip" type="button">Jeitos que amo</button>
+                    <button class="chip" type="button">Favoritar ⭐</button>
+                    <button class="chip" type="button">Enviar para meu par</button>
+                  </div>
+                  <h2>Quando você ri com a cabeça jogada pra trás</h2>
+                  <p>
+                    Tem um som específico quando você dá aquela gargalhada sincera, meio desafinada, que me lembra nossa
+                    primeira viagem juntos. Nesse dia eu prometi registrar todas as versões do seu sorriso.
+                  </p>
+                  <div class="card-meta">
+                    <span>😊 leve</span>
+                    <span>14 fev · Café preferido</span>
+                  </div>
+                  <div class="screen-card" style="gap: 0.5rem;">
+                    <strong style="font-size: 0.85rem;">Compartilhar com privacidade</strong>
+                    <p style="font-size: 0.8rem;">
+                      Cada envio precisa de aprovação do seu par. Nada sai do app sem consentimento duplo.
+                    </p>
+                    <button class="ghost-button" style="justify-content: center;">Gerenciar permissões</button>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span>Início</span>
+                  <span class="active">Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-albuns" role="tabpanel" aria-labelledby="albuns">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>📔 66%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.8rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>Álbuns</h2>
+                    <button class="chip" type="button">+ Novo álbum</button>
+                  </div>
+                  <div class="screen-card" style="gap: 0.7rem;">
+                    <div style="display: grid; gap: 0.5rem;">
+                      <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong>Músicas que ele ama</strong>
+                        <span style="font-size: 0.75rem; color: var(--text-muted);">5 curiosidades</span>
+                      </div>
+                      <div style="display: flex; gap: 0.4rem;">
+                        <div style="flex: 1; height: 60px; border-radius: 14px; background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=200&q=80') center/cover;"></div>
+                        <div style="flex: 1; height: 60px; border-radius: 14px; background: url('https://images.unsplash.com/photo-1521335629791-ce4aec67dd47?auto=format&fit=crop&w=200&q=80') center/cover;"></div>
+                        <div style="flex: 1; height: 60px; border-radius: 14px; background: url('https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=200&q=80') center/cover;"></div>
+                      </div>
+                    </div>
+                    <div style="display: flex; gap: 0.4rem;">
+                      <button class="chip" type="button">Reordenar</button>
+                      <button class="chip" type="button">Cor lilás</button>
+                    </div>
+                  </div>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <strong>Jeitos que só ela tem</strong>
+                      <span style="font-size: 0.75rem; color: var(--text-muted);">3 curiosidades</span>
+                    </div>
+                    <p style="font-size: 0.82rem;">
+                      Chips coloridos indicam humor predominante. Dá para renomear e escolher ícones fofos.
+                    </p>
+                    <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                      <button class="chip" type="button">Editar capa</button>
+                      <button class="chip" type="button">Definir emoji 😊</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span>Início</span>
+                  <span class="active">Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-album-detalhe" role="tabpanel" aria-labelledby="album-detalhe">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>✈️ 62%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.8rem;">
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <h2>Viagens</h2>
+                      <button class="chip" type="button">Personalizar capa</button>
+                    </div>
+                    <p style="font-size: 0.84rem;">
+                      12 curiosidades · cores em degradê pêssego · ícone ✈️
+                    </p>
+                    <div style="display: grid; gap: 0.4rem;">
+                      <div style="display: flex; justify-content: space-between; font-size: 0.82rem;">
+                        <span>Nosso ano em 12 curiosidades</span>
+                        <span>Modo Memórias</span>
+                      </div>
+                      <div style="display: flex; gap: 0.4rem;">
+                        <button class="chip" type="button">Cronologia</button>
+                        <button class="chip" type="button">Adicionar capa</button>
+                        <button class="chip" type="button">Exportar PDF</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div class="card-meta">
+                      <span>Out 2023 · Lisboa</span>
+                      <span>Favoritar ⭐</span>
+                    </div>
+                    <h3 style="font-size: 1rem;">Pastel de nata às 7h</h3>
+                    <p style="font-size: 0.82rem;">
+                      Acordamos cedo para ver o nascer do sol no Miradouro. Você dançou com a xícara de café na mão e eu registrei na hora.
+                    </p>
+                    <div class="card-meta">
+                      <span>😍 encantado</span>
+                      <span>Ver fotos (4)</span>
+                    </div>
+                  </div>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div class="card-meta">
+                      <span>Jul 2022 · Serra</span>
+                      <span>Compartilhar</span>
+                    </div>
+                    <h3 style="font-size: 1rem;">Chuva inesperada</h3>
+                    <p style="font-size: 0.82rem;">
+                      Ficamos presos na varanda e transformamos em dança lenta. Salvei a playlist do momento aqui.
+                    </p>
+                    <div class="card-meta">
+                      <span>🎶 nostálgico</span>
+                      <span>Editar</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span>Início</span>
+                  <span class="active">Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-busca" role="tabpanel" aria-labelledby="busca">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>🔍 54%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.7rem;">
+                  <h2>Buscar memórias</h2>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <input type="search" placeholder="Busque por título, tag ou sentimento" style="padding: 0.6rem 0.8rem; border-radius: 16px; border: 1px solid var(--border-soft); background: transparent; color: var(--text-primary);" aria-label="Campo de busca" />
+                    <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                      <button class="chip" type="button">Álbum: Viagens</button>
+                      <button class="chip" type="button">Humor 😊</button>
+                      <button class="chip" type="button">Favoritos ⭐</button>
+                      <button class="chip" type="button">2022</button>
+                      <button class="chip" type="button">Tag: café</button>
+                    </div>
+                    <div class="card-meta">
+                      <span>Sugestões: rotina, viagem, playlist</span>
+                      <span>Limpar filtros</span>
+                    </div>
+                  </div>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div class="card-meta">
+                      <span>Resultado</span>
+                      <span>3 itens</span>
+                    </div>
+                    <div style="display: grid; gap: 0.5rem;">
+                      <div class="screen-card" style="box-shadow: none; background: rgba(255, 255, 255, 0.65);">
+                        <div class="card-meta">
+                          <span>Viagens</span>
+                          <span>😊 leve</span>
+                        </div>
+                        <h3 style="font-size: 0.95rem;">Café da manhã em Lisboa</h3>
+                        <p style="font-size: 0.8rem;">O cheirinho de pastel recém-saído do forno ficou pra sempre.</p>
+                      </div>
+                      <div class="screen-card" style="box-shadow: none; background: rgba(255, 255, 255, 0.65);">
+                        <div class="card-meta">
+                          <span>Músicas</span>
+                          <span>🎶 nostálgico</span>
+                        </div>
+                        <h3 style="font-size: 0.95rem;">Playlist da estrada</h3>
+                        <p style="font-size: 0.8rem;">Começa com Colbie Caillat e termina em risadas desafinadas.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span>Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span class="active">Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-linha-do-tempo" role="tabpanel" aria-labelledby="linha-do-tempo">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>🗓️ 51%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.8rem;">
+                  <h2>Linha do tempo</h2>
+                  <div class="screen-card" style="gap: 0.5rem;">
+                    <div class="card-meta">
+                      <span>2024</span>
+                      <span>Modo Memórias ativo</span>
+                    </div>
+                    <div style="display: grid; gap: 0.5rem;">
+                      <div class="card-meta">
+                        <span>Abr · Casa nova</span>
+                        <span>🥂 celebrando</span>
+                      </div>
+                      <p style="font-size: 0.82rem;">
+                        Registramos a primeira noite na casa nova com pizza no chão e música baixinha.
+                      </p>
+                    </div>
+                    <hr style="border: none; border-top: 1px dashed rgba(148, 163, 184, 0.3);" />
+                    <div style="display: grid; gap: 0.5rem;">
+                      <div class="card-meta">
+                        <span>Fev · Carnaval</span>
+                        <span>🎉 animado</span>
+                      </div>
+                      <p style="font-size: 0.82rem;">
+                        Ficamos coloridos de glitter e salvamos as melhores fotos aqui.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div class="card-meta">
+                      <span>2023</span>
+                      <span>6 curiosidades</span>
+                    </div>
+                    <p style="font-size: 0.82rem;">
+                      Destaques automáticos mostram os melhores momentos de cada mês.
+                    </p>
+                    <button class="chip" type="button">Ver resumo anual</button>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span class="active">Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-perfil" role="tabpanel" aria-labelledby="perfil">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>🔐 48%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.7rem;">
+                  <h2>Perfil & privacidade</h2>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div class="card-meta">
+                      <span>Tema</span>
+                      <span>Claro · Lilás</span>
+                    </div>
+                    <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                      <button class="chip" type="button">Alternar Claro/Escuro</button>
+                      <button class="chip" type="button">Lilás</button>
+                      <button class="chip" type="button">Rosa</button>
+                      <button class="chip" type="button">Menta</button>
+                    </div>
+                  </div>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div class="card-meta">
+                      <span>Privacidade</span>
+                      <span>Biometria ativa</span>
+                    </div>
+                    <div style="display: grid; gap: 0.4rem;">
+                      <button class="chip" type="button">Configurar PIN</button>
+                      <button class="chip" type="button">Gerenciar pareamento</button>
+                      <button class="chip" type="button">Consentimentos LGPD</button>
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">
+                      Mostramos com clareza quando algo será compartilhado. Sem pegadinhas.
+                    </p>
+                  </div>
+                  <div class="screen-card" style="gap: 0.6rem;">
+                    <div class="card-meta">
+                      <span>Backup & Exportação</span>
+                      <span>Sincronizado hoje</span>
+                    </div>
+                    <div style="display: grid; gap: 0.4rem;">
+                      <button class="chip" type="button">Exportar PDF</button>
+                      <button class="chip" type="button">Exportar JSON</button>
+                      <button class="chip" type="button">Agendar lembretes</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span>Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span class="active">Perfil</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-empty-inicio" role="tabpanel" aria-labelledby="empty-inicio">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>🌤️ 47%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.8rem;">
+                  <div class="screen-illustration">Comece com carinho</div>
+                  <h2>Nenhuma curiosidade ainda.</h2>
+                  <p>Nenhuma curiosidade ainda. Comece com um sorriso de hoje.</p>
+                  <div class="screen-card" style="gap: 0.5rem; text-align: center;">
+                    <p style="font-size: 0.85rem;">Toque no botão abaixo para registrar algo que fez seu coração vibrar.</p>
+                    <button class="pill-button" style="justify-content: center; width: 100%;">Nova curiosidade</button>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span class="active">Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-empty-albuns" role="tabpanel" aria-labelledby="empty-albuns">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>📁 46%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.8rem;">
+                  <div class="screen-illustration">Crie seu primeiro álbum</div>
+                  <h2>Separe memórias por temas fofos</h2>
+                  <p>Que tal começar com "Coisas que só ela fala" ou "Músicas que nos marcaram"?</p>
+                  <div class="screen-card" style="gap: 0.5rem;">
+                    <button class="pill-button" style="justify-content: center;">Criar álbum</button>
+                    <button class="ghost-button" style="justify-content: center;">Ver sugestões</button>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span>Início</span>
+                  <span class="active">Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-empty-busca" role="tabpanel" aria-labelledby="empty-busca">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>🔎 45%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.8rem;">
+                  <div class="screen-illustration">Nada encontrado (por enquanto)</div>
+                  <h2>Não encontramos nada com esse filtro</h2>
+                  <p>Tente ajustar tags ou escolha outro humor. Aqui vão algumas tags populares: viagem, café, rotina, playlist.</p>
+                  <button class="ghost-button" style="justify-content: center;">Limpar filtros</button>
+                </div>
+                <div class="bottom-nav">
+                  <span>Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span class="active">Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-erro-upload" role="tabpanel" aria-labelledby="erro-upload">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>⚠️ 43%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.8rem;">
+                  <div class="screen-illustration" style="background: var(--danger-soft); color: var(--danger);">Upload com carinho falhou</div>
+                  <h2>Não deu para enviar a foto</h2>
+                  <p>Verificamos que a conexão oscilou. Tente novamente com Wi-Fi ou salve como rascunho offline.</p>
+                  <div class="screen-card" style="gap: 0.5rem;">
+                    <button class="pill-button" style="justify-content: center;">Tentar novamente</button>
+                    <button class="ghost-button" style="justify-content: center;">Salvar sem foto</button>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span>Início</span>
+                  <span>Álbuns</span>
+                  <span class="active">Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+              <div class="screen" id="screen-erro-offline" role="tabpanel" aria-labelledby="erro-offline">
+                <div class="status-bar">
+                  <span>09:41</span>
+                  <span>📡 40%</span>
+                </div>
+                <div class="screen-body" style="gap: 0.8rem;">
+                  <div class="screen-illustration" style="background: rgba(56, 189, 248, 0.18); color: var(--info);">Modo offline tranquilo</div>
+                  <h2>Sem internet, mas suas memórias estão seguras</h2>
+                  <p>Continue registrando normalmente. Vamos sincronizar assim que a conexão voltar.</p>
+                  <div class="screen-card" style="gap: 0.5rem;">
+                    <div class="card-meta">
+                      <span>Próximo backup</span>
+                      <span>Assim que estiver online</span>
+                    </div>
+                    <button class="chip" type="button">Ativar lembrete</button>
+                    <button class="chip" type="button">Ver dicas offline</button>
+                  </div>
+                </div>
+                <div class="bottom-nav">
+                  <span class="active">Início</span>
+                  <span>Álbuns</span>
+                  <span>Adicionar</span>
+                  <span>Busca</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="note" style="align-self: center;">
+            <strong>Como navegar no protótipo</strong>
+            <p>Toque nas abas acima para simular a navegação. Todas as ações principais possuem feedback visual rápido (150–220ms) e respeitam preferências de redução de movimento.</p>
+            <p>Para uma experiência de handoff, exporte esta página em PDF ou compartilhe o link em modo apresentação.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-card" id="design-system">
+      <div class="section-header">
+        <h2>Design system — aconchego minimalista</h2>
+        <p>Tokens de cor, tipografia, espaçamentos e princípios de acessibilidade que mantêm o app consistente nas versões clara e escura.</p>
+      </div>
+      <div class="tokens-grid">
+        <div class="token">
+          <div class="token-swatch" style="--token-color: var(--accent-lilas);"></div>
+          <strong>Lilás Pastel</strong>
+          <span>#BFA6FF · Primário</span>
+          <p style="font-size: 0.82rem;">Botões principais, chips e destaques delicados.</p>
+        </div>
+        <div class="token">
+          <div class="token-swatch" style="--token-color: var(--accent-rosa);"></div>
+          <strong>Rosa Blush</strong>
+          <span>#FFC7DA · Variação</span>
+          <p style="font-size: 0.82rem;">Tema alternativo com sensação romântica e leve.</p>
+        </div>
+        <div class="token">
+          <div class="token-swatch" style="--token-color: var(--accent-menta);"></div>
+          <strong>Menta Suave</strong>
+          <span>#BFEDE3 · Variação</span>
+          <p style="font-size: 0.82rem;">Ideal para momentos revigorantes e calmos.</p>
+        </div>
+        <div class="token">
+          <div class="token-swatch" style="--token-color: var(--accent-pessego);"></div>
+          <strong>Pêssego Aconchego</strong>
+          <span>#FFDAB3 · Destaque</span>
+          <p style="font-size: 0.82rem;">Refresca álbuns especiais e modo memórias.</p>
+        </div>
+        <div class="token">
+          <div class="token-swatch" style="--token-color: #f9fafb;"></div>
+          <strong>Fundo Quase Branco</strong>
+          <span>#F9FAFB · Claro</span>
+          <p style="font-size: 0.82rem;">Fundo com luz quente para sensação de aconchego.</p>
+        </div>
+        <div class="token">
+          <div class="token-swatch" style="--token-color: #0f172a;"></div>
+          <strong>Grafite Azulado</strong>
+          <span>#0F172A · Escuro</span>
+          <p style="font-size: 0.82rem;">Modo escuro com contraste AA+ e foco em leitura.</p>
+        </div>
+      </div>
+      <div class="section-header" style="margin-top: var(--spacing-xl);">
+        <h3>Tipografia & hierarquia</h3>
+        <p>Fonte arredondada Poppins/Nunito em pesos 500–700. Títulos com 20–24px, corpo 14–16px e microtextos acessíveis.</p>
+      </div>
+      <div class="typography-samples">
+        <div class="typo-row">
+          <span style="font-size: 1.5rem; font-weight: 700;">Título H1 — 24px</span>
+          <p>Usado em onboarding, mensagens acolhedoras e telas principais.</p>
+        </div>
+        <div class="typo-row">
+          <span style="font-size: 1.25rem; font-weight: 600;">Título H2 — 20px</span>
+          <p>Aplicado em cards, seções da home e passos de criação.</p>
+        </div>
+        <div class="typo-row">
+          <span style="font-size: 1rem; font-weight: 600;">Subtítulo — 16px</span>
+          <p>Favorece leitura rápida em chips, botões e navegação.</p>
+        </div>
+        <div class="typo-row">
+          <span style="font-size: 0.92rem; font-weight: 500;">Corpo — 14/15px</span>
+          <p>Texto principal com espaçamento generoso e contraste AA.</p>
+        </div>
+        <div class="typo-row">
+          <span style="font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">Legenda & Meta</span>
+          <p>Usada para datas, humores, indicadores de privacidade.</p>
+        </div>
+      </div>
+      <div class="section-header" style="margin-top: var(--spacing-xl);">
+        <h3>Princípios de acessibilidade</h3>
+      </div>
+      <ul class="microcopy-list">
+        <li><strong>Contraste AA+</strong> em texto primário e botões, com tokens específicos para o modo escuro.</li>
+        <li><strong>Tamanho de toque ≥ 48px</strong> em CTAs, chips e bottom nav.</li>
+        <li><strong>Redução de movimento</strong> respeitada via media query, reduzindo animações e transições.</li>
+        <li><strong>Leitores de tela</strong> recebem descrições claras em botões de compartilhar, favoritos e campos de formulário.</li>
+        <li><strong>Privacidade transparente</strong> com microcopy direta sobre compartilhamento e pareamento.</li>
+      </ul>
+    </section>
+    <section class="section-card" id="componentes">
+      <div class="section-header">
+        <h2>Biblioteca de componentes</h2>
+        <p>Componentes reutilizáveis com estados, microinterações e tokens aplicados. Cada item tem toque mínimo de 48px e feedback suave.</p>
+      </div>
+      <div class="component-library">
+        <div class="component-row">
+          <h3>Botões & CTA</h3>
+          <div class="component-grid">
+            <div class="component-card">
+              <h4>Pill Button</h4>
+              <button class="pill-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 5v14" />
+                  <path d="M5 12h14" />
+                </svg>
+                Nova curiosidade
+              </button>
+              <p>CTA principal com sombra levinha, efeito hover de elevação e foco visível.</p>
+            </div>
+            <div class="component-card">
+              <h4>Ghost Button</h4>
+              <button class="ghost-button">Salvar rascunho</button>
+              <p>Opção secundária. Mantém contraste AA e borda em vidro fosco.</p>
+            </div>
+            <div class="component-card">
+              <h4>Floating Action</h4>
+              <div class="floating-cta" style="position: relative; bottom: auto; right: auto;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 5v14" />
+                  <path d="M5 12h14" />
+                </svg>
+                Nova curiosidade
+              </div>
+              <p>Botão flutuante em forma de pílula com confete sutil ao salvar.</p>
+            </div>
+          </div>
+        </div>
+        <div class="component-row">
+          <h3>Card de curiosidade</h3>
+          <div class="component-grid">
+            <div class="component-card" style="gap: 0.6rem;">
+              <div style="height: 120px; border-radius: var(--radius-md); background: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80') center/cover;"></div>
+              <div class="card-meta">
+                <span>Jeitos que amo</span>
+                <span>😊 leve</span>
+              </div>
+              <h4 style="font-size: 1.05rem;">Ela cantarola no banho</h4>
+              <p style="font-size: 0.9rem;">Trecho da descrição com limite de 3 linhas para leitura rápida.</p>
+              <div class="card-meta">
+                <span>08 jan</span>
+                <span>⭐</span>
+              </div>
+            </div>
+            <div class="component-card" style="gap: 0.6rem;">
+              <h4>Chip / Etiqueta</h4>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button class="chip" type="button">Humor 😊</button>
+                <button class="chip" type="button">Tag: viagem</button>
+                <button class="chip" type="button">Favoritar ⭐</button>
+              </div>
+              <p>Chips com feedback de elevação leve e opção de ícone.</p>
+            </div>
+            <div class="component-card" style="gap: 0.6rem;">
+              <h4>Inputs & campos</h4>
+              <label style="display: grid; gap: 0.3rem;">
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Título da curiosidade</span>
+                <input type="text" placeholder="Jeito de sorrir" style="padding: 0.6rem; border-radius: 16px; border: 1px solid var(--border-soft); background: transparent; color: var(--text-primary);" />
+              </label>
+              <label style="display: grid; gap: 0.3rem;">
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Descrição</span>
+                <textarea rows="2" style="padding: 0.6rem; border-radius: 16px; border: 1px solid var(--border-soft); background: transparent; color: var(--text-primary); resize: none;">Escreva lembranças com voz leve e direta.</textarea>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="component-row" id="componentes-extra">
+          <h3>Estados & navegação</h3>
+          <div class="component-grid">
+            <div class="component-card" style="gap: 0.6rem;">
+              <h4>Bottom Navigation</h4>
+              <div class="bottom-nav" style="background: rgba(255,255,255,0.65); padding: 0.6rem; border-radius: 18px;">
+                <span class="active">Início</span>
+                <span>Álbuns</span>
+                <span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 5v14" />
+                    <path d="M5 12h14" />
+                  </svg>
+                </span>
+                <span>Busca</span>
+              </div>
+              <p>4 abas + ação flutuante opcional. Estados ativos com cor suave.</p>
+            </div>
+            <div class="component-card" style="gap: 0.6rem;">
+              <h4>Empty state acolhedor</h4>
+              <div class="screen-illustration" style="height: 120px;">Comece registrando uma curiosidade que te faz sorrir</div>
+              <p>Ilustrações brandas, copy carinhosa e CTA direto para ação.</p>
+            </div>
+            <div class="component-card" style="gap: 0.6rem;">
+              <h4>Feedbacks & toasts</h4>
+              <div class="screen-card" style="gap: 0.4rem; background: rgba(191, 237, 227, 0.35); color: #0f172a;">
+                <strong>Guardado com carinho</strong>
+                <p style="font-size: 0.85rem;">Sua curiosidade foi sincronizada com sucesso.</p>
+              </div>
+              <p>Toasts surgem por 3s com animação de fade/slide e respeitam redução de movimento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-card" id="fluxos">
+      <div class="section-header">
+        <h2>Fluxos principais & microinterações</h2>
+        <p>Experiências desenhadas para manter os casais focados no afeto, com poucos cliques e feedbacks imediatos.</p>
+      </div>
+      <div class="flow-grid">
+        <div class="flow-step">
+          <h4>Onboarding → Conta</h4>
+          <p>Três telas contam o conceito, mostram o fluxo de criação e deixam claro o controle de privacidade antes de pedir login.</p>
+          <p><strong>Microcopy:</strong> "Guarde as pequenas coisas" / "Entendi, continuar".</p>
+        </div>
+        <div class="flow-step">
+          <h4>Criar curiosidade</h4>
+          <p>Card preview ao vivo, chips para humor, tags e local, além de rascunho offline. Ao salvar, o botão pulsa com confete sutil.</p>
+          <p><strong>Feedback:</strong> Toast "Guardado com carinho" + vibrar leve (haptic medium).</p>
+        </div>
+        <div class="flow-step">
+          <h4>Álbuns & linha do tempo</h4>
+          <p>Grade com mosaico de fotos, contador e cores personalizadas. Na linha do tempo, marcos por mês/ano e destaque "Nosso ano em 12 curiosidades".</p>
+        </div>
+        <div class="flow-step">
+          <h4>Busca inteligente</h4>
+          <p>Entrada de texto livre com sugestões de tags e filtros combináveis (álbum, data, humor, favoritos). Estado vazio sugere termos populares.</p>
+        </div>
+        <div class="flow-step">
+          <h4>Privacidade & pareamento</h4>
+          <p>Configurações mostram status de biometria, PIN e pareamento. Compartilhar exige aprovação dupla e mostra aviso transparente.</p>
+          <p><strong>LGPD:</strong> Consentimento claro e exportação (PDF/JSON) em dois toques.</p>
+        </div>
+        <div class="flow-step">
+          <h4>Offline-first & lembretes</h4>
+          <p>Modo offline mantém captura total; sincronização ocorre em background. Lembretes carinhosos motivam novos registros sem pressão.</p>
+        </div>
+      </div>
+      <div class="section-header" style="margin-top: var(--spacing-xl);">
+        <h3>Microcopy & tom de voz</h3>
+        <p>Afetuoso, direto e positivo. Sem clichês, sempre acolhedor.</p>
+      </div>
+      <div class="microcopy-list">
+        <div><strong>Onboarding:</strong> "Guarde as pequenas coisas que fazem o amor ser único."</div>
+        <div><strong>CTA principal:</strong> "Nova curiosidade" / "Guardar com carinho".</div>
+        <div><strong>Empty states:</strong> "Comece com um sorriso de hoje." · "Crie seu primeiro álbum e personalize do seu jeito."</div>
+        <div><strong>Erros:</strong> "Verificamos que a conexão oscilou. Salve como rascunho offline."</div>
+        <div><strong>Notificações:</strong> "Que tal registrar uma curiosidade de hoje?"</div>
+      </div>
+    </section>
+    <section class="section-card" id="mockups">
+      <div class="section-header">
+        <h2>Mockups iOS & Android</h2>
+        <p>Preview hi-fi das telas mais importantes nas plataformas principais. A estrutura mantém consistência com componentes nativos.</p>
+      </div>
+      <div class="mockups-grid">
+        <div>
+          <div class="phone-shell">
+            <div class="phone-screen" style="min-height: 520px;">
+              <div class="screen-body" style="gap: 0.8rem;">
+                <h2 style="text-align: center;">Home iOS</h2>
+                <div class="screen-card" style="gap: 0.5rem;">
+                  <div class="card-meta">
+                    <span>Curiosidades · 8</span>
+                    <span>Favoritas · 4</span>
+                  </div>
+                  <h3 style="font-size: 1rem;">Álbuns populares</h3>
+                  <p style="font-size: 0.85rem;">Mosaicos com vidro fosco e navegação por gestos.</p>
+                </div>
+                <div class="screen-card" style="gap: 0.5rem;">
+                  <div class="card-meta">
+                    <span>Favorita da semana</span>
+                    <span>😊 leve</span>
+                  </div>
+                  <p style="font-size: 0.85rem;">Layout iOS respeita safe areas e bottom nav flutuante.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="mockup-caption">Mockup iOS — feed com CTA flutuante</p>
+        </div>
+        <div>
+          <div class="phone-shell" style="border-radius: 30px;">
+            <div class="phone-screen" style="min-height: 520px;">
+              <div class="screen-body" style="gap: 0.8rem;">
+                <h2 style="text-align: center;">Álbum Android</h2>
+                <div class="screen-card" style="gap: 0.5rem;">
+                  <div class="card-meta">
+                    <span>Viagens</span>
+                    <span>12 curiosidades</span>
+                  </div>
+                  <p style="font-size: 0.85rem;">Grid adaptável, chips com Material You e tema pastel.</p>
+                </div>
+                <div class="screen-card" style="gap: 0.5rem;">
+                  <div class="card-meta">
+                    <span>Pastel de nata às 7h</span>
+                    <span>😍 encantado</span>
+                  </div>
+                  <p style="font-size: 0.85rem;">Elevations suaves e ícones arredondados combinam com Android 14.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="mockup-caption">Mockup Android — álbum detalhado</p>
+        </div>
+      </div>
+    </section>
+    <section class="section-card" id="dados">
+      <div class="section-header">
+        <h2>Dados de exemplo</h2>
+        <p>Estrutura JSON para popular o app com 6 curiosidades e 3 álbuns. Inclui metadados de privacidade e sincronização.</p>
+      </div>
+      <div class="json-block" role="region" aria-label="Exemplo de dados em JSON">
+<pre><code>{
+  "user": {
+    "id": "u_joana",
+    "pairedWith": "u_lucas",
+    "theme": { "mode": "light", "accent": "lilas" },
+    "preferences": { "biometry": true, "pin": true, "reminders": "weekly" }
+  },
+  "albums": [
+    {
+      "id": "alb_musicas",
+      "name": "Músicas que ele ama",
+      "color": "lilas",
+      "icon": "🎧",
+      "coverPhotos": ["img/coldplay.jpg", "img/vinil.jpg", "img/fones.jpg"],
+      "count": 2
+    },
+    {
+      "id": "alb_jeitos",
+      "name": "Jeitos que só ela tem",
+      "color": "rosa",
+      "icon": "😊",
+      "coverPhotos": ["img/sorriso.jpg"],
+      "count": 2
+    },
+    {
+      "id": "alb_viagens",
+      "name": "Viagens",
+      "color": "pessego",
+      "icon": "✈️",
+      "coverPhotos": ["img/lisboa.jpg", "img/serra.jpg", "img/estrada.jpg"],
+      "count": 2
+    }
+  ],
+  "curiosidades": [
+    {
+      "id": "cur_01",
+      "title": "Nossa música favorita para relaxar",
+      "albumId": "alb_musicas",
+      "mood": "leve",
+      "tags": ["música", "rotina"],
+      "favorite": true,
+      "date": "2024-03-12",
+      "location": "Sala",
+      "description": "Colocamos Fix You e você fecha os olhos sorrindo.",
+      "photos": ["img/sofa.jpg"],
+      "privacy": { "shared": false }
+    },
+    {
+      "id": "cur_02",
+      "title": "Playlist da estrada",
+      "albumId": "alb_musicas",
+      "mood": "nostalgico",
+      "tags": ["viagem", "playlist"],
+      "favorite": false,
+      "date": "2023-07-04",
+      "location": "Carro",
+      "description": "Cantamos desafinados indo para o litoral.",
+      "photos": [],
+      "privacy": { "shared": true, "approvedByPartner": true }
+    },
+    {
+      "id": "cur_03",
+      "title": "Jeito fofo de pedir café",
+      "albumId": "alb_jeitos",
+      "mood": "leve",
+      "tags": ["rotina", "carinho"],
+      "favorite": true,
+      "date": "2024-04-02",
+      "location": "Cozinha",
+      "description": "Você inclina a cabeça e pede um café com carinho.",
+      "photos": ["img/cafe.jpg"],
+      "privacy": { "shared": false }
+    },
+    {
+      "id": "cur_04",
+      "title": "Quando você ri jogando Uno",
+      "albumId": "alb_jeitos",
+      "mood": "divertido",
+      "tags": ["jogos", "risadas"],
+      "favorite": false,
+      "date": "2023-11-18",
+      "location": "Sala",
+      "description": "A gargalhada desafinada que amo registrar.",
+      "photos": [],
+      "privacy": { "shared": false }
+    },
+    {
+      "id": "cur_05",
+      "title": "Pastel de nata às 7h",
+      "albumId": "alb_viagens",
+      "mood": "encantado",
+      "tags": ["viagem", "lisboa"],
+      "favorite": true,
+      "date": "2023-10-22",
+      "location": "Lisboa",
+      "description": "Dançamos vendo o sol nascer no miradouro.",
+      "photos": ["img/pastel.jpg", "img/amanhecer.jpg"],
+      "privacy": { "shared": true, "approvedByPartner": false }
+    },
+    {
+      "id": "cur_06",
+      "title": "Chuva inesperada na serra",
+      "albumId": "alb_viagens",
+      "mood": "nostalgico",
+      "tags": ["chuva", "dança"],
+      "favorite": false,
+      "date": "2022-07-18",
+      "location": "Serra",
+      "description": "Transformamos a chuva em dança lenta e playlist própria.",
+      "photos": ["img/chuva.jpg"],
+      "privacy": { "shared": false }
+    }
+  ]
+}</code></pre>
+      </div>
+    </section>
+    <section class="section-card" id="handoff">
+      <div class="section-header">
+        <h2>Handoff & próximos passos</h2>
+        <p>Recursos para desenvolvimento, QA e comunicação com o time.</p>
+      </div>
+      <div class="flow-grid">
+        <div class="flow-step">
+          <h4>Arquivos organizados</h4>
+          <p>Assets nomeados com prefixo <code>nc_</code>. Exportar em PNG/SVG/WEBP. Componentes agrupados por categoria.</p>
+        </div>
+        <div class="flow-step">
+          <h4>Tokens compartilhados</h4>
+          <p>CSS custom properties nesta página podem ser reutilizadas direto no app (Tailwind/Vanilla). </p>
+        </div>
+        <div class="flow-step">
+          <h4>Estados de movimento</h4>
+          <p>Microinterações de 150–220ms com easing suave. Respeitam <code>prefers-reduced-motion</code>. Documentadas para iOS (UIKit) e Android (Motion).</p>
+        </div>
+        <div class="flow-step">
+          <h4>QA & testes</h4>
+          <p>Checar contraste AA, acessibilidade de leitor de tela e bloqueio biométrico. Lembretes e push notifications opcionais.</p>
+        </div>
+      </div>
+      <div class="note">
+        <strong>Backup & privacidade</strong>
+        <p>Por padrão, dados ficam apenas no dispositivo. Quando pareado, cada curiosidade exige aprovação dupla para sincronizar. Exportações (PDF/zip/JSON) pedem confirmação com biometria/PIN.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    Criado com carinho para o conceito <strong>Nossas Curiosidades</strong>. Personalize o nome da marca quando quiser. 💜
+  </footer>
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.querySelector('[data-action="toggle-theme"]');
+    const accentButtons = document.querySelectorAll('[data-accent-option]');
+    const screenTabs = document.querySelectorAll('.screen-tab');
+    const screens = document.querySelectorAll('.screen');
+    const componentLink = document.querySelector('[data-action="scroll-to-components"]');
+
+    function setTheme(mode) {
+      root.setAttribute('data-theme', mode);
+      if (themeToggle) {
+        themeToggle.setAttribute('aria-pressed', mode === 'dark');
+      }
+      localStorage.setItem('nc-theme', mode);
+    }
+
+    function toggleTheme() {
+      const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      setTheme(current);
+    }
+
+    function applyAccent(accent) {
+      root.setAttribute('data-accent', accent);
+      accentButtons.forEach((btn) => {
+        const isActive = btn.dataset.accentOption === accent;
+        btn.setAttribute('aria-pressed', isActive);
+      });
+      localStorage.setItem('nc-accent', accent);
+    }
+
+    themeToggle?.addEventListener('click', toggleTheme);
+
+    accentButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        applyAccent(btn.dataset.accentOption);
+      });
+    });
+
+    screenTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.screenTarget;
+        screenTabs.forEach((t) => t.setAttribute('aria-selected', t === tab));
+        screens.forEach((screen) => {
+          screen.classList.toggle('active', screen.id === `screen-${target}`);
+        });
+      });
+    });
+
+    componentLink?.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelector('#componentes')?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    const storedTheme = localStorage.getItem('nc-theme');
+    const storedAccent = localStorage.getItem('nc-accent');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (storedTheme) {
+      setTheme(storedTheme);
+    } else if (prefersDark) {
+      setTheme('dark');
+    }
+
+    if (storedAccent) {
+      applyAccent(storedAccent);
+    }
+  </script>
+</body>
+</html>
